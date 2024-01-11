@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="utf-8">
+  <title>New drug</title>
+</head>
+
+<body>
+<h1>Create new drug</h1>
+<div style="text-align: right;">
+  <a th:href="@{/}">Go to main</a>
+</div>
+  <form th:action="@{/api/version1/drug/create}" th:method="post" th:object="${drug}">
+    <label>
+      name
+      <input th:field="*{name}" required>
+    </label>
+    <label>
+      category
+      <input th:field="*{category}" required>
+    </label>
+    <label>
+      price
+      <input th:field="*{price}" required>
+    </label>
+    <label>
+      conditions
+      <input th:field="*{conditions}" required>
+    </label>
+    <div>
+      <button type="submit">create</button>
+    </div>
+  </form>
+</body>
+
+</html>

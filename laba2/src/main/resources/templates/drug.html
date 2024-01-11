@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="utf-8">
+    <title>Drug</title>
+</head>
+
+<body>
+<h1>All drugs</h1>
+<div style="text-align: right;">
+    <a th:href="@{/}">Go to main</a>
+    <a th:href="@{/drug/create}">Create new drug</a>
+</div>
+<br/>
+
+<table>
+
+    <thead>
+    <tr>
+        <td>№</td>
+        <td>name</td>
+        <td>category</td>
+        <td>price</td>
+        <td>conditions</td>
+        <td>delete</td>
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="drug, idx: ${drugs}">
+            <td th:utext="${idx.index}+1"></td>
+            <td th:utext="${drug.name}"></td>
+            <td th:utext="${drug.category}"></td>
+            <td th:utext="${drug.price}"></td>
+            <td th:utext="${drug.conditions}"></td>
+            <td>
+                <form th:action="@{/drug/delete/{id}(id=${drug.uniqueId})}" th:method="post">
+                    <div>
+                        <button type="submit">delete</button>
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>

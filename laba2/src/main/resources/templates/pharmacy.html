@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="utf-8">
+    <title>Pharmacy</title>
+</head>
+
+<body>
+<h1>All pharmacies</h1>
+<div style="text-align: right;">
+    <a th:href="@{/pharmacy/create?ingCount=5}">Create new pharmacy</a>
+    <a th:href="@{/}">Go to main</a>
+</div>
+<table>
+
+    <thead>
+    <tr>
+        <td>№</td>
+        <td>address</td>
+        <td>head</td>
+        <td>district</td>
+        <td>phone</td>
+        <td>delete</td>
+    </tr>
+    </thead>
+
+    <tbody>
+        <tr th:each="ph, idx: ${pharmacies}">
+            <td th:utext="${idx.index}+1"></td>
+            <td th:utext="${ph.address}"></td>
+            <td th:utext="${ph.head}"></td>
+            <td th:utext="${ph.district}"></td>
+            <td th:utext="${ph.phone}"></td>
+            <td>
+                <form th:action="@{/pharmacy/view/{id}(id=${ph.uniqueId})}" th:method="get">
+                    <div>
+                        <button type="submit">view</button>
+                    </div>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{/pharmacy/delete/{id}(id=${ph.uniqueId})}" th:method="post">
+                    <div>
+                        <button type="submit">delete</button>
+                    </div>
+                </form>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

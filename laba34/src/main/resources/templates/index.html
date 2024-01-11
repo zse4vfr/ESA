@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="utf-8">
+    <title>Pharmacy</title>
+</head>
+
+<body>
+<h1>Аптека</h1>
+<p>Api version1 - spring mvc</p>
+<div>
+    <a th:href="@{/api/version1/pharmacy}">View all pharmacies</a>
+</div>
+<div>
+    <a th:href="@{/api/version1/pharmacy/create?ingCount=5}">Create new pharmacy</a>
+</div>
+<div>
+    <a th:href="@{/api/version1/drug}">View all drugs</a>
+</div>
+<div>
+    <a th:href="@{/api/version1/drug/create}">Create new drug</a>
+</div>
+
+<p>Api version2 - spring rest, json|xml + xslt</p>
+<div>
+    <label>GET /api/version2/pharmacy/all</label>
+    <a th:href="@{/api/version2/pharmacy/all}">View all pharmacies</a>
+</div>
+<div>
+    <label>View pharmacy GET /api/version2/pharmacy/{id}</label>
+</div>
+<div>
+    <label>Create pharmacy POST /api/version2/pharmacy/create</label>
+</div>
+<div>
+    <label>Delete pharmacy POST /api/version2/pharmacy/delete/{id}</label>
+</div>
+<div>
+    <label>GET /api/version2/drug/all</label>
+    <a th:href="@{/api/version2/drug/all}">View all drugs</a>
+</div>
+<div>
+    <label>Create drug POST /api/version2/drug/create</label>
+</div>
+<div>
+    <label>Delete drug POST /api/version2/drug/delete/{id}</label>
+</div>
+</body>
+
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+    <meta charset="utf-8">
+    <title>View pharmacy</title>
+</head>
+
+<body>
+<h1>Pharmacy view</h1>
+<div style="text-align: right;">
+    <a th:href="@{/}">Go to main</a>
+    <a th:href="@{/pharmacy}">go back</a>
+</div>
+<p></p>
+
+<div th:object="${pharmacy}">
+    <div>
+        <p>
+            <div>address :
+                <span th:utext="*{address}"></span>
+            </div>
+        </p>
+        <p>
+            <div>head :
+                <span th:utext="*{head}"></span>
+            </div>
+        </p>
+        <p>
+            <div>district :
+                <span th:utext="*{district}"></span>
+            </div>
+        </p>
+        <p>
+            <div>phone:
+                <span th:utext="*{phone}"></span>
+            </div>
+        </p>
+    </div>
+    <p>drugs :</p>
+    <div th:each="ing, itemStat : *{drugForPharmacy}">
+        <p>
+            <div >number :
+                <span th:utext="${itemStat.index + 1}"></span>
+            </div>
+            <div>name :
+                <span th:utext="${ing.drug.name}"></span>
+            </div>
+            <div>quantity :
+                <span th:utext="${ing.quantity}"></span>
+            </div>
+        </p>
+    </div>
+</div>
+</body>
+
+</html>

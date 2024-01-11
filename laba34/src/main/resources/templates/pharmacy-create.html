@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>New pharmacy</title>
+</head>
+
+<body>
+<h1>Create new pharmacy</h1>
+<div style="text-align: right;">
+    <a th:href="@{/}">Go to main</a>
+</div>
+<form th:action="@{/api/version1/pharmacy/create}" th:method="post">
+    <div th:object="${pharmacy}">
+      <div>
+          <label>
+              address
+              <input th:field="*{address}" required>
+          </label>
+          <label>
+              head
+              <input th:field="*{head}" required>
+          </label>
+          <label>
+              district
+              <input th:field="*{district}" required>
+          </label>
+          <label>
+              phone
+              <input th:field="*{phone}" required>
+          </label>
+      </div>
+
+    </div>
+    <div th:object="${drugDTO}">
+        <div th:each="dto, itemStat : *{drugs}">
+            <label>
+                drug
+                <select th:field="*{drugs[__${itemStat.index}__].drugId}">
+                    <option th:each="i : ${allDrugs}" th:value="${i.uniqueId}" th:text="${i.name}">
+                </select>
+            </label>
+            <label>
+                quantity
+                <input th:field="*{drugs[__${itemStat.index}__].quantity}" required>
+            </label>
+        </div>
+    </div>
+    <div>
+        <button type="submit">create</button>
+    </div>
+</form>
+</body>
+
+</html>
